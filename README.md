@@ -15,5 +15,8 @@ Setup Store
 Create Slice
 Dispatch action
 Subscribe to store
+Created full functional login
+Created full Functional Logout
+Created Profile with complete user details
 
 
