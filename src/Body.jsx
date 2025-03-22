@@ -8,9 +8,9 @@ const Body = () => {
     <>
     <NavBar/>
     <Outlet/>
-    <Footer/>
+    <Footer/>    
     </>
   )
 }
 
-export default Body
+export default Body  

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "./UserSlice"; // Import the Redux action
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("henryhpass");
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
-  const fuser = useSelector((store) => store.user); 
+  const navigate = useNavigate();
   // Fetch users when component loads
   useEffect(() => {
     const fetchUsers = async () => {
@@ -36,7 +36,7 @@ const Login = () => {
     if (matchedUser) {
       console.log("Login Successful", matchedUser);
       dispatch(loginUser(matchedUser)); // Update Redux with authenticated user
-      console.log(fuser)
+      navigate('/')
     } else {
       console.error("Invalid email or password");
       alert("Invalid email or password!");
@@ -63,9 +63,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button  className="btn btn-primary my-5" onClick={handleLogin}>
-          <Link to="/">
-            Login
-            </Link>
+               Login
           </button>
         </div>
       </div>
