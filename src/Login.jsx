@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "./UserSlice"; // Import the Redux action
+import { Link } from "react-router";
 
 
 const Login = () => {
@@ -61,8 +62,10 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="btn btn-primary my-5" onClick={handleLogin}>
+          <button  className="btn btn-primary my-5" onClick={handleLogin}>
+          <Link to="/">
             Login
+            </Link>
           </button>
         </div>
       </div>

@@ -1,38 +1,41 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
-import Profile from './Profile'
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUser } from './UserSlice'
 
 const NavBar = () => {
-  const [login,setLogin] = useState("Login")
+  const user = useSelector((store)=>store.user)
+  const dispatch = useDispatch();
+  console.log(user)
   return (
     <div className="navbar bg-base-300 shadow-sm">
     <div className="flex-1">
       <a className="btn btn-ghost text-xl">DevTinder</a>
     </div>
-    <div className="flex gap-2">
-      <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-      <div className="dropdown dropdown-end">
-        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mx-5">
-          <div className="w-10 rounded-full ">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
+  {user.isAuthenticated && <div className="flex gap-2">
+    <h3 className="my-auto w-24 md:w-auto text-white" >{user?.user?.firstName}</h3>
+    <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mx-5">
+        <div className="w-10 rounded-full ">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src={user?.user?.image}/>
         </div>
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-          <li>
-            <Link to="/profile" className="justify-between">
-              Profile
-              <span className="badge">New</span>
-            </Link>
-          </li>
-          <li><Link to="/setting">Setting</Link></li>
-          <li><Link to="/Login">{login}</Link></li>
-        </ul>
       </div>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+          <Link to="/profile" className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </Link>
+        </li>
+        <li><Link to="/setting">Setting</Link></li>
+        <li onClick={() => dispatch(logoutUser())}><Link to="/Login">Logout</Link></li>
+      </ul>
     </div>
+  </div>}
   </div>
   )
 }
