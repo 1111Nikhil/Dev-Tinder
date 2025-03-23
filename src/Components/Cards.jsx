@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Cards = () => {
+const Cards = ({data}) => {
+    console.log(data)
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
   <figure>
