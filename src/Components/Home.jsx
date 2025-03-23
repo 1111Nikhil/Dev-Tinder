@@ -6,7 +6,7 @@ const Home = () => {
   const users = useSelector((store) => store.card);
   console.log(users)
   return (
-    <div>
+    <div className='flex flex-wrap'>
       {users.map((user) => <Cards key={user.id} data={user}/>)}
     </div>
   )
