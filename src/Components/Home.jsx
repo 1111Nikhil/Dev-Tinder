@@ -7,7 +7,7 @@ const Home = () => {
   console.log(users)
   return (
     <div>
-      {users.map((user) => <Cards key={user.id}/>)}
+      {users.map((user) => <Cards key={user.id} data={user}/>)}
     </div>
   )
 }
