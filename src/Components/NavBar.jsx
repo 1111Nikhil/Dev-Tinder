@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUser } from './UserSlice'
+import { logoutUser } from '../utilities/UserSlice'
 
 const NavBar = () => {
   const user = useSelector((store)=>store.user)
@@ -10,8 +10,9 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300 shadow-sm">
     <div className="flex-1">
-      <a className="btn btn-ghost text-xl">DevTinder</a>
+      <Link to='/home' className="btn btn-ghost text-xl">DevTinder</Link>
     </div>
+    
   {user.isAuthenticated && <div className="flex gap-2">
     <h3 className="my-auto w-24 md:w-auto text-white" >{user?.user?.firstName}</h3>
     <div className="dropdown dropdown-end">

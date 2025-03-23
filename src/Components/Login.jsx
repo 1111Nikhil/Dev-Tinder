@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { loginUser } from "./UserSlice"; // Import the Redux action
+import { useDispatch} from "react-redux";
+import { loginUser } from "../utilities/UserSlice"; // Import the Redux action
 import { Link, useNavigate } from "react-router";
+import { addCards } from "../utilities/CardSlice";
+
 
 
 const Login = () => {
@@ -16,15 +18,16 @@ const Login = () => {
     const fetchUsers = async () => {
       try {
         const res = await axios.get("https://dummyjson.com/users");
-        console.log("Fetched Users:", res.data.users); // Correct logging
-        setUsers(res.data.users);
+        console.log("Fetched Users:", res.data.users);
+        setUsers(res.data.users) // Correct logging
+        dispatch(addCards(res.data.users));
       } catch (error) {
         console.error("Error fetching users:", error);
       }
     };
 
     fetchUsers();
-  }, []);
+  }, [dispatch]);
 
   // Handle Login & Dispatch User to Redux
   const handleLogin = () => {
