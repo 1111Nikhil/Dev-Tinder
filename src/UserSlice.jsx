@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Initial state
+// Get saved user data from localStorage
+const savedUser = JSON.parse(localStorage.getItem("user")) || null;
+
 const initialState = {
-  user: null, // Stores logged-in user
-  isAuthenticated: false, // Tracks login status
+  user: savedUser, // Load user data from localStorage
+  isAuthenticated: !!savedUser, // Check if user is logged in
 };
 
-// Redux Slice
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -14,16 +15,15 @@ const userSlice = createSlice({
     loginUser: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
+      localStorage.setItem("user", JSON.stringify(action.payload)); // ✅ Save to localStorage
     },
     logoutUser: (state) => {
       state.user = null;
       state.isAuthenticated = false;
+      localStorage.removeItem("user"); // ✅ Remove from localStorage on logout
     },
   },
 });
 
-// Export actions
 export const { loginUser, logoutUser } = userSlice.actions;
-
-// Export reducer
 export default userSlice.reducer;

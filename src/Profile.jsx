@@ -3,13 +3,7 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const user = useSelector((store) => store.user.user);
-
-  console.log(user);
-
-  if (!user) {
-    return <h1 className="text-center text-red-500 text-xl">No User Logged In</h1>;
-  }
-
+ 
   return (
     <div className="bg-base-100 p-4 max-w-xl mx-auto shadow-md rounded-lg">
       {/* Avatar and Name */}

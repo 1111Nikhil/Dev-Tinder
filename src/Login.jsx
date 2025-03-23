@@ -36,7 +36,7 @@ const Login = () => {
     if (matchedUser) {
       console.log("Login Successful", matchedUser);
       dispatch(loginUser(matchedUser)); // Update Redux with authenticated user
-      navigate('/')
+      navigate('/home')
     } else {
       console.error("Invalid email or password");
       alert("Invalid email or password!");

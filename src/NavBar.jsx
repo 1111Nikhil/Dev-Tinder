@@ -26,12 +26,12 @@ const NavBar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li>
-          <Link to="/profile" className="justify-between">
+          <Link to="/home/profile" className="justify-between">
             Profile
           </Link>
         </li>
-        <li><Link to="/setting">Setting</Link></li>
-        <li onClick={() => dispatch(logoutUser())}><Link to="/Login">Logout</Link></li>
+        <li><Link to="/home/setting">Setting</Link></li>
+        <li onClick={() => dispatch(logoutUser())}><Link to="/">Logout</Link></li>
       </ul>
     </div>
   </div>}

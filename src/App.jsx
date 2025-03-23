@@ -10,10 +10,10 @@ function App() {
       <>
       <BrowserRouter basename="/">
       <Routes>
-        <Route path="/" element={<Body/>}>
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/setting" element={<Setting/>}/>
-        <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<Login/>}/>
+        <Route path="/home" element={<Body/>} >
+        <Route path="/home/profile" element={<Profile/>}/>
+        <Route path="/home/setting" element={<Setting/>}/>
         </Route>
       </Routes>
       </BrowserRouter>
